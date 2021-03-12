@@ -1,0 +1,16 @@
+if((CMAKE_BUILD_TYPE STREQUAL RELEASE) OR (CMAKE_BUILD_TYPE STREQUAL Release))
+    message("DOXYGEN TARGET")
+    find_package(Doxygen
+        REQUIRED dot)
+
+    #find_package(LATEX)
+    set(DOXYGEN_OUTPUT_LANGUAGE ${DOCUMENTATION_LANGUAGE})
+    set(DOXYGEN_GENERATE_TODOLIST YES)
+    set(DOXYGEN_HTML_FILE_EXTENSION .xhtml)
+
+    doxygen_add_docs(doc_doxygen
+        ${CMAKE_CURRENT_SOURCE_DIR}/parcae/
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        COMMENT "Generating documentation with Doxygen")
+
+endif((CMAKE_BUILD_TYPE STREQUAL RELEASE) OR (CMAKE_BUILD_TYPE STREQUAL Release))

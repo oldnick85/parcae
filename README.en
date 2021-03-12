@@ -1,0 +1,23 @@
+   ==============
+   === parcae ===
+   ==============
+
+Header-onli is a library for the analysis of multithreaded algorithms written in C++. 
+All that is required is to insert execution stages into the target code, and the program 
+will iterate over all possible combinations of executed threads.
+
+The CParcae class does all the work. The target code runs normally, in multiple threads. 
+At the very beginning of the thread's work, you need to call the StartThread method 
+with a parameter - the thread identifier, which is a unique string. As the program runs, 
+the Milestone function is called, indicating the end of the next stage of the program. 
+When the thread terminates, the StopThread function should be called, and when all threads 
+terminate, Stop. The function that starts the threads is passed as an argument to 
+the Start method. This method then runs the multithreaded code over and over again, 
+blocking the threads in different orders so that the steps are interleaved in every 
+possible way. Analyzing the resulting results of such launches, one can draw conclusions 
+about the possible outcomes of launching the target code in multithreaded mode.
+
+---- TODO:
+1. Accounting for mutexes and deadlocks in analyzed threads
+2. Statistics on the execution time of the stages
+3. Multilingual documentation
